@@ -12,7 +12,7 @@ import inspect
 # 全局标志，确保根日志记录器只配置一次
 _ROOT_LOGGER_CONFIGURED = False
 
-def setup_development_logging(module_name: str | None):
+def setup_logging(module_name: str | None):
     """
     为指定模块设置开发日志
     

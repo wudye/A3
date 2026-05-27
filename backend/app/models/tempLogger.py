@@ -1,7 +1,7 @@
-from app.core.setup_development_logging import setup_development_logging
+from app.core.setup_logging import setup_logging
 
 
-logger = setup_development_logging(__name__)
+logger = setup_logging(__name__)
 
 def te():
     logger.info("test")

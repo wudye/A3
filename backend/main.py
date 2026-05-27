@@ -1,27 +1,38 @@
 # main.py
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 from quantam import quantam_test
 from predict import predict_test
-from app.core.setup_development_logging import setup_development_logging
+from app.core.setup_logging import setup_logging
 from app.models.tempLogger import te
 
 
 # 获取main模块的logger（自动创建 logs/main/ 目录）
-logger = setup_development_logging(__name__)
+logger = setup_logging(__name__)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Code here runs on startup
+    #logger.info(msg="app startup")
+    try:
+        yield
+    finally:
+        # Code here runs on shutdown
+        logger.info(msg="app shutdown")
+
+app = FastAPI(
+    title="trade,predict,talk",
+    description="the platform can do trade, predict, talk",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
+    version="0.0.1",
+    lifespan=lifespan
+)
 
 
-app = FastAPI()
 
-logger.info("🚀 正在启动交易预测系统...")
-logger.info(f"日志基础目录: logs/")
 
-# 测试不同模块
-quantam_test()
-predict_test()
-
-logger.info("✅ 应用启动完成")
-
-print(te())
 
 @app.get("/")
 async def root():

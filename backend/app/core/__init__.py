@@ -1,0 +1,1 @@
+# Shared, fundamental application logic like security and configuration.

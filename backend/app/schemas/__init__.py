@@ -1,0 +1,1 @@
+# How your data is represented in the API.

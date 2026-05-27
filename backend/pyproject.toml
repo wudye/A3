@@ -6,19 +6,29 @@ requires-python = ">=3.12"
 dependencies = [
     "predict",
     "quantam",
+    "quagent",
     "fastapi>=0.136.1",
     "uvicorn>=0.47.0",
+    "rich>=15.0.0",
+    "google>=3.0.0",
 ]
 
 [dependency-groups]
-dev = []
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.4.0",
+]
 
 [tool.uv.workspace]
 members = [
     "packages/predict_all",
     "packages/quantam_trade",
+    "packages/quantam_agent",
 ]
+
 [tool.uv.sources]
 predict = {workspace = true}
 quantam = {workspace = true}
+quagent = {workspace = true}
 

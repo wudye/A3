@@ -1,11 +1,15 @@
 # main.py
+from tkinter import NO
+
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from quantam import quantam_test
 from predict import predict_test
+from app.core import redis_manager
 from app.core.setup_logging import setup_logging
 from app.models.tempLogger import te
-
+from app.core.middlewares import setup_middlewares
+from app.core.redis_manager import redis_manager
 
 # 获取main模块的logger（自动创建 logs/main/ 目录）
 logger = setup_logging(__name__)
@@ -14,10 +18,12 @@ logger = setup_logging(__name__)
 async def lifespan(app: FastAPI):
     # Code here runs on startup
     #logger.info(msg="app startup")
+    redis_manager.init_app()
     try:
         yield
     finally:
         # Code here runs on shutdown
+        await redis_manager.close()
         logger.info(msg="app shutdown")
 
 app = FastAPI(
@@ -37,9 +43,21 @@ app = FastAPI(
 @app.get("/")
 async def root():
     logger.info("📥 收到根路径请求")
+    redis = redis_manager.client
+    if redis is not None:
+        await redis.ping()
     return {"message": "Hello World"}
 
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     logger.info(f"👋 收到问候请求: {name}")
     return {"message": f"Hello {name}"}
+
+
+
+
+
+import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)

@@ -1,13 +1,14 @@
 from fileinput import filename
 import logging
-import os
-from os import path
 from pathlib import Path
 
 from rich.logging import RichHandler
 from rich.console import Console
 from datetime import datetime
 import inspect
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # 全局标志，确保根日志记录器只配置一次
 _ROOT_LOGGER_CONFIGURED = False

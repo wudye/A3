@@ -7,9 +7,9 @@ from quantam import quantam_test
 from predict import predict_test
 from app.core import redis_manager
 from app.core.setup_logging import setup_logging
-from app.models.tempLogger import te
 from app.core.middlewares import setup_middlewares
 from app.core.redis_manager import redis_manager
+from app.api.v1 import auth
 
 # 获取main模块的logger（自动创建 logs/main/ 目录）
 logger = setup_logging(__name__)
@@ -38,6 +38,7 @@ app = FastAPI(
 
 
 
+app.include_router(auth.router)
 
 
 @app.get("/")
@@ -46,6 +47,10 @@ async def root():
     redis = redis_manager.client
     if redis is not None:
         await redis.ping()
+        await redis.set("te", "hello")
+        await redis.set("te2", "hello2")
+        t = await redis.get("te")
+        logger.info("test redis get ->{t} ")
     return {"message": "Hello World"}
 
 @app.get("/hello/{name}")

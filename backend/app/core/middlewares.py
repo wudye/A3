@@ -42,11 +42,6 @@ _QUIET_HTTP_PATHS = frozenset({
     "/redoc",
 })
 
-AUTH_HTTP_PATH = frozenset({
-    "/",
-    "/login",
-    "/register"
-})
 
 def set_cors(app: FastAPI) -> None:
     app.add_middleware(

@@ -8,6 +8,8 @@ from pathlib import Path
 
 class Settings(BaseSettings):
     """应用配置（支持 .env 文件和系统环境变量）"""
+
+    enviroment: str = Field(default="development", description="运行环境")
     
     model_config = SettingsConfigDict(
         env_file=[
@@ -42,7 +44,14 @@ class Settings(BaseSettings):
         default=None,
         description="PostgreSQL 数据库URL"
     )
-    
+    database_pool_size: int = Field(
+        default=20,
+        description="数据库连接池大小"
+    )
+    database_max_overflow: int = Field(
+        default=10,
+        description="数据库最大溢出连接数"
+    )
     # API 配置
     api_auth_key: Optional[str] = Field(
         default=None,
@@ -68,6 +77,16 @@ class Settings(BaseSettings):
     )
     jwt_expire_minutes: int = Field(
         default=1440,
+        ge=1
+    )
+
+    jwt_alogrithm: str = Field(
+        default="HS256",
+        pattern="^(HS256|HS384|HS512)$"
+    )
+
+    refresh_token_expire_days: int = Field(
+        default=7,
         ge=1
     )
 

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
-import { detectLocaleServer } from "@/i18n/server";
-import { I18nProvider } from "@/i18n/context";
-
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,26 +18,20 @@ export const metadata: Metadata = {
   description: "earn money, predict future, talk deeply",
 };
 
+// 只提供 html/body/theme，不处理 i18n
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await detectLocaleServer();
   return (
-    <html
-      lang={locale}
-      suppressHydrationWarning  
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html suppressHydrationWarning 
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="class">
-            <I18nProvider initialLocal={locale}>
-              {children}  
-
-            </I18nProvider>
-          </ThemeProvider>
-        </body>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

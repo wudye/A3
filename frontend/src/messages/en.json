@@ -1,0 +1,30 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About Us",
+    "login": "Login",
+    "logout": "Logout",
+    "contact": "Contact",
+    "settings": "Settings"
+  },
+  "nav": {
+    "title": "MY AI WORLD",
+    "subtitle": "earn money, predict future, talk deeply"
+  },
+  "welcome": {
+    "title": "Welcome to My Application",
+    "description": "This is a multilingual application that supports smart language switching"
+  },
+  "home": {
+    "heroTitle": "Explore Infinite Possibilities",
+    "heroSubtitle": "Use AI technology to start your wealth journey",
+    "investment": "Investment",
+    "prediction": "Smart Prediction", 
+    "communication": "Global Communication"
+  },
+  "about": {
+    "mission": "Our Mission",
+    "vision": "Future Vision",
+    "team": "Team Introduction"
+  }
+}

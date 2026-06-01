@@ -1,0 +1,30 @@
+{
+  "common": {
+    "home": "首页",
+    "about": "关于我们",
+    "login": "登录",
+    "logout": "登出",
+    "contact": "联系我们",
+    "settings": "设置"
+  },
+  "nav": {
+    "title": "我的 AI 世界",
+    "subtitle": "赚钱、预测未来、深入交流"
+  },
+  "welcome": {
+    "title": "欢迎来到我的应用",
+    "description": "这是一个支持多语言的应用程序，可以智能切换中英文"
+  },
+  "home": {
+    "heroTitle": "探索无限可能",
+    "heroSubtitle": "使用人工智能技术，开启您的财富之旅",
+    "investment": "投资理财",
+    "prediction": "智能预测",
+    "communication": "全球交流"
+  },
+  "about": {
+    "mission": "我们的使命",
+    "vision": "未来愿景",
+    "team": "团队介绍"
+  }
+}

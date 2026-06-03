@@ -19,7 +19,7 @@ class RedisManager:
             cls._instance = super().__new__(cls)
         return cls._instance
 
-    def __init__(self):
+    def __init__(self) -> None:
         # 确保每个实例有自己的 _client
         if not hasattr(self, '_client'):
             self._client = None
@@ -50,12 +50,16 @@ class RedisManager:
         )
         """
         self._client = Redis(connection_pool=pool)
+        return self._client
+
+
 
 
     @property
-    def client(self):
+    def client(self) -> Redis:
         if self._client is None:
             self.init_app()
+        assert self._client is not None
         return self._client
 
     async def close(self):

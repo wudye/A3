@@ -1,26 +1,39 @@
-import Image from "next/image";
-import { ThemeToggle } from "@/components/theme-toggle"
+"use client";
 
+import { Footer } from "@/components/landing/footer";
+import { Header } from "@/components/landing/header";
+import { Hero } from "@/components/landing/hero";
+import { Section } from "@/components/landing/section";
+import { useI18n } from "@/core/i18n/hooks";
+import {
+  TrendingUp,
+  BrainCircuit,
+  MessageCircle,
+  Play,
+  ArrowRight,
+  BarChart3,
+  Sparkles,
+  ChevronRight,
+} from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-             <ThemeToggle></ThemeToggle>
+  const { t } = useI18n();
 
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-            <div>
-        trade: foundamental and quantative analyse
-        choose, trade, backtest, AI Agent + Machine Learning
-      </div>
-      <div>
-        predict: tredency , future
-      </div>
-      <div>
-        digitHuman: entertaiment, communication, growing
-      </div>
-   
-    
+  return (
+    <div className="flex flex-col min-h-screen bg-background font-sans">
+      <Header />
+
+      {/* ====== Hero Section ====== */}
+      <main className="flex w-full flex-col">
+        <Hero />
+        <Section />
+
       </main>
+  
+
+      {/* ====== Footer decoration ====== */}
+      <Footer />
+  
     </div>
   );
 }

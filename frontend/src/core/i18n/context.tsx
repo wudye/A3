@@ -1,5 +1,6 @@
+"use client"
 import type {Locale} from "./locale"
-import {createContext, useContext} from "react"
+import {createContext, useContext, useState} from "react"
 
 export interface I18nContextType{
     locale: Locale,
@@ -8,4 +9,30 @@ export interface I18nContextType{
 
 export const I18nContext = createContext<I18nContextType | null>(null)
 
-export const useI18n = () => useContext(I18nContext)
+export function I18nProvider({
+    children, 
+    initialLocale
+}: {
+    children: React.ReactNode,
+    initialLocale: Locale
+}) {
+    const [locale, setLocale] = useState<Locale>(initialLocale)
+    const handleSetLocale = (newLocale: Locale) => {
+        setLocale(newLocale);
+        document.cookie = `locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    };
+
+    return (
+        <I18nContext.Provider value={{ locale, setLocale: handleSetLocale }}>
+            {children}
+        </I18nContext.Provider>
+    )
+}
+
+export function useI18nContext() {
+    const context = useContext(I18nContext);
+    if (!context) {
+        throw new Error("useI18nContext must be used within an I18nProvider");
+    }
+    return context;
+}

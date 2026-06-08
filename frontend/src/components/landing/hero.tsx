@@ -23,7 +23,7 @@ export function Hero({ className }: { className?: string }) {
         className,
       )}
     >
-        <div style={{ width: '100%', height: '600px', position: 'absolute', top:0 , backgroundColor:"black"}}>
+        <div style={{ width: '100%', height: '650px', position: 'absolute', top:0 , backgroundColor:"black"}}>
             <Galaxy
                 mouseRepulsion
                 mouseInteraction
@@ -40,7 +40,7 @@ export function Hero({ className }: { className?: string }) {
             >
             </Galaxy>
             <FlickeringGrid
-                className="absolute inset-0 z-0 translate-y-8 mask-[url(/images/cc.svg)] mask-size-[94vw] mask-center mask-no-repeat md:mask-size-[50vh] pointer-events-none"
+                className="absolute inset-0 z-0 translate-y-8 mask-[url(/images/cc.svg)] mask-size-[34vw] mask-center mask-no-repeat md:mask-size-[50vh] pointer-events-none"
                 squareSize={4}
                 gridGap={4}
                 color={"white"}

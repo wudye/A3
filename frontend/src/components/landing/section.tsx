@@ -20,7 +20,7 @@ export function Section() {
     const { t } = useI18n();
     return (
       <>
-      <section className="relative flex flex-col items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center pt-2 pb-2 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background glow orbs */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[128px]" />

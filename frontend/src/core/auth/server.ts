@@ -21,7 +21,6 @@ export async function getServerSideUser(): Promise<AuthResult> {
             user: {
                 id: "e2e-user",
                 email: "e2e@test.local",
-                name: "E2E Test User",
                 system_role: "admin",
                 needs_setup: false,
             },

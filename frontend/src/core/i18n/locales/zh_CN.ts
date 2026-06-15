@@ -69,7 +69,7 @@ export const zhCN: Translations = {
       "AI 数字人交流"
     ],
     description: "交易、预测和交流 — 由 AI 驱动",
-    versionInfo: "版本 1.0 由 邬铭伟 开发",
+    versionInfo: "版本 1.0 包括 Agents Harness",
   },
 
 };

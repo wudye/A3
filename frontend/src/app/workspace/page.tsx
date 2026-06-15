@@ -1,4 +1,5 @@
 export default function WorkspacePage() {
+  console.log("WorkspacePage");
     return (
     <div>
       <h1>Workspace Page</h1>

@@ -62,13 +62,13 @@ export function Hero({ className }: { className?: string }) {
             <p className="text-muted-foreground ml-5 mr-5  mt-8  text-center text-2xl text-shadow-sm">
                 {t.hero.description}
             </p>
-            <a href="https://github.com/wudye/A3">
+            <Link href="/workspace">
             <Button className="size-lg mt-8 scale-108" size="lg">
                 <span className="text-md">{t.hero.versionInfo}</span>
 
                 <ChevronRightIcon className="size-4" />
             </Button>
-            </a>
+            </Link>
             <p className="text-muted-foreground mt-4 text-center text-sm opacity-80">
                     planed sandboxes, memories, tools, skills and subagents
             </p>

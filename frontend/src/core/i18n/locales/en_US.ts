@@ -68,7 +68,7 @@ export const enUS: Translations = {
       "AI Communication"
     ],
     description: "Trading,  Prediction and Communication - Powered by AI.", 
-    versionInfo: "Version 1.0 By Mingwei Wu"
+    versionInfo: "Version 1.0 including Agents Harness"
   
   },
 };

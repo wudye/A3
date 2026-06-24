@@ -151,3 +151,8 @@ async def logout_all(
     count = await auth_service.revoke_all_user_tokens(current_user.id)
     
     return {"message": f"已撤销 {count} 个令牌"}
+
+
+@router.get("/authtest")
+async def get_current_user_info():
+    return "auth test"

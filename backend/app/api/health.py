@@ -35,3 +35,8 @@ async def say_hello(name: str):
 @router.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+@router.get("/api/tem")
+async def tem():
+    return {"status": "ok", "message": "this is test"}
